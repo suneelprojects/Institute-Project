@@ -1,0 +1,12 @@
+.container{
+    border: 1px solid #5451A6;
+    padding: 10px;
+    border-radius: 5px;
+    height: auto;
+}
+.button{
+    background-color: #5451A6;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
