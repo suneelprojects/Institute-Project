@@ -13,7 +13,7 @@ const App = () => {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path="/" element={<JobListing/>} />
+        <Route path="/" element={<JobListing/>}/>
         <Route path="/host" element={<Host />} />
         <Route path="/jobDetails" element={<JobDetails />} /> {/* Ensure this matches navigate path */}
         <Route path='/login' element={<Login/>}/>

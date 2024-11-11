@@ -11,7 +11,7 @@ const NavBar = () => {
     <nav className={`navbar px-2 py-1 ${navBarStyle.navbar}`}>
       <div className='container'>
       <div className={`navbar-brand ${navBarStyle.navbarIcon}`}>
-        <img src={logo} alt="icon" width="70" height="70"/>
+       <Link to='/'> <img src={logo} alt="icon" width="70" height="70"/></Link>
       </div>
       <div className={`nav-link ${navBarStyle.navbarCenter}`}>
         <Link to='/' href="/home">Home</Link>
