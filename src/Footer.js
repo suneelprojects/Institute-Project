@@ -7,20 +7,22 @@ function Footer() {
       <div className="row">
         <div className="col-md-4">
           <h4 className="text-white mb-4">About Us</h4>
-          <p className="text-white mb-4">engineerHUB is one stop solution for engineers! A platform to learn in community, explore campuses & get placed in dream companies.</p>
-          <p className="text-white mb-4"><i className="bi bi-geo-alt"></i> 8-B, Gyan Khand 4, Indirapuram, Ghaziabad, Uttar Pradesh (201014)</p>
+          <p className="text-white mb-4">socialHire is one stop solution for engineers and graduates! A platform to learn in community, explore campuses & get placed in dream companies.</p>
+          <p className="text-white mb-4"><i className="bi bi-geo-alt"></i> #508, 5th Floor,
+Manjeera Majestic Commercial,
+JNTU - HiTech City Road,
+KPHB, Hyderabad - 500072
+Contact: +91-8019 479 419</p>
           <p className="text-white mb-4">Recognized by <a href="#" className="text-white fs-4">#startupindia</a></p>
           <div>
-            <a href="#" className="m-2"><i className="bi bi-instagram fs-3 text-white"></i></a>
-            <a href="#" className="m-2"><i className="bi bi-linkedin fs-3 text-white"></i></a>
-            <a href="#" className="m-2"><i className="bi bi-youtube fs-3 text-white"></i></a>
-            <a href="#" className="m-2"><i className="bi bi-discord fs-3 text-white"></i></a>
-            <a href="#" className="m-2"><i className="bi bi-whatsapp fs-3 text-white"></i></a>
-            <a href="#" className="m-2"><i className="fas fa-paper-plane fs-3 text-white"></i></a>
+            <a href="https://www.instagram.com/socialprachar_institute/" className="m-2"><i className="bi bi-instagram fs-3 text-white"></i></a>
+            <a href="https://www.linkedin.com/company/socialprachar-com/posts/?feedView=all" className="m-2"><i className="bi bi-linkedin fs-3 text-white"></i></a>
+            <a href="https://www.youtube.com/@socialprachar" className="m-2"><i className="bi bi-youtube fs-3 text-white"></i></a>
+            <a href="https://x.com/i/flow/login?redirect_after_login=%2Fsocial_prachar" className="m-2"><i className="bi bi-twitter-x fs-3 text-white"></i></a>
+            <a href="https://www.facebook.com/socialprachar/" className="m-2"><i className="bi bi-facebook fs-3 text-white"></i></a>
+
+            
           </div>
-          <p className="text-white mt-4">Have a query?</p>
-          <pre className="text-white mt-4"><a href="#" className="text-white" style={{textDecoration:'none'}}>info@engineerhub.in     +91 83031 56089</a></pre>
-          <pre className="text-white"><a href="#" className="text-white" style={{textDecoration:'none'}}>career@engineerhub.in    +91 91298 83089</a></pre>
           <p className="text-white text-center mt-4"></p>
           <p className="text-white text-center mt-4">  </p>
        </div>

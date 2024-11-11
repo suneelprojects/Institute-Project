@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './Footer';
-import { Navbar } from 'react-bootstrap';
 import NavBar from './NavBarComponent/NavBar'
 import JobDetails from './CardsComponent/JobDetails';
 import Host from './HostComponent/Host';

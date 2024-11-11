@@ -13,7 +13,7 @@ const JobDetails = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [editorStateJobDescription, setEditorStateJobDescription] = useState(EditorState.createEmpty());
   const [editorStateWhatYouWillBring, setEditorStateWhatYouWillBring] = useState(EditorState.createEmpty());
-  const jobsPerPage = 5;
+  const jobsPerPage = 9;
   const navigate = useNavigate();
   const [user, setUser] = useState();
 
@@ -82,7 +82,7 @@ const JobDetails = () => {
         <div className='col-4 d-none d-sm-block'>
           {Jobs && (
             <>
-              <ul style={{ display: 'flex', flexDirection: 'column', listStyleType: 'none', padding: '0', overflowY: 'auto', height: '150vh' }}>
+              <ul style={{ display: 'flex', flexDirection: 'column', listStyleType: 'none', padding: '0', overflowY: 'auto', height: '200vh' }}>
                 {currentJobs.map((job, index) => (
                   <li key={index} style={{ marginBottom: '10px' }}>
                     <Cards job={job} />
