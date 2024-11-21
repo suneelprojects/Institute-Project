@@ -1,62 +1,99 @@
-   .jobListingsRow {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+/* Job Card Styles */
+.jobCard {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+  border-radius: 10px;
+  border: 1px solid #bbb9ed94;
+  margin: 16px;
+  margin-bottom: 10px;
+  max-width: 350px;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.jobCard:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 6px 10px #aaaae2;
+}
+
+.cardBody {
+  flex-grow: 1; 
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #53518ddc;
+  color: white !important;
+  padding: 10px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-top: auto; 
+}
+
+.companyLogo {
+  width: 50px;
+  height: 50px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
+
+.viewButton {
+  background-color: white;
+  color: #5451A6 !important;
+  cursor: pointer !important;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #cdcdee;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 8px;
+  border-radius: 20px;
+}
+
+.blink {
+  animation: zoomRotateBlink 1s linear infinite;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes zoomRotateBlink {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
   }
-  
-  .jobCard {
-    display: flex;
-    flex-direction: column; /* Ensure the content is stacked vertically */
-    justify-content: space-between; /* Space out the content to push footer to the bottom */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin: 16px;
-    margin-bottom: 10px;
-    max-width: 350px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    height: 100%; /* Make sure all cards have the same height */
+  25% {
+    transform: scale(1.1) rotate(10deg);
+    opacity: 0.5;
   }
-  
-  .cardBody {
-    flex-grow: 1; /* Ensures the body takes all available space */
+  50% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
   }
-  
-  .cardFooter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #8a88b2;
-    padding: 10px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    margin-top: auto; /* Pushes the footer to the bottom */
+  75% {
+    transform: scale(1.1) rotate(-10deg);
+    opacity: 0.5;
   }
-  
-  .companyLogo {
-    width: 50px;
-    height: 50px;
-    margin-right: 16px;
-    border-radius: 50%;
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
   }
-  
-  .viewButton {
-    background-color: #5451A6;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  
-  .tag {
-    display: inline-block;
-    background-color: #d9d9ed;
-    border: 0.1px solid #acaadc;
-    border-radius: 4px;
-    padding: 5px 10px;
-    margin-bottom: 8px;
-  }
-  
+}
+
+
+.expiredCard {
+  background-color: #f8d7da; /* Light red background */
+  border-color: #f5c6cb; /* Red border */
+  color: #721c24; /* Dark red text */
+}

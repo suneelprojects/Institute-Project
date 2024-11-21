@@ -16,7 +16,6 @@
   color: black;
   font-size: 20px;
 }
-  
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -25,9 +24,9 @@
 
 .tag {
   display: inline-block;
-  background-color: #d9d9ed;
-  border: 0.1px solid #acaadc;
-  border-radius: 4px;
+  background-color: #d3d2f4dc;
+  /* border: 0.1px solid #53518ddc; */
+   border-radius: 4px;
   padding: 5px 10px;
   margin-bottom: 8px;
 }
@@ -55,9 +54,44 @@
 .infoCard i {
   width: 35px;
   height: 35px;
-  color:  #5451A6;
+  color: #53518ddc;
 }
 .Learntag{
   text-decoration: none;
   padding: 10px;
+}
+.Image{
+  height: auto;
+   width: 100%;
+   max-width: 700px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   transition: transform 0.2s ease-in-out;
+}
+.Image:hover {
+ transform: scale(1.06); 
+ 
+}  
+/* .form{
+  border-radius: 35px !important;
+}
+.form:hover{
+  transform: scale(1.06); 
+  box-shadow: 0 4px 8px #adacac;
+} */
+.form {
+  border-radius: 35px !important;
+  display: inline-block; 
+  pointer-events: auto; z-index: 1; position: relative; visibility: visible; opacity: 1;
+}
+
+.form:hover {
+  -webkit-transform: scale(1.06); 
+  -moz-transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  -o-transform: scale(1.06);
+  transform: scale(1.06); 
+  box-shadow: 0 4px 8px #adacac;
+  transition: transform 0.2s ease-in-out; 
 }

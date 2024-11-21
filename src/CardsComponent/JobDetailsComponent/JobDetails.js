@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import style from './jobDetails.module.css';
-import Cards from './Cards';
-import { auth, db } from '../firebase';
+import Cards from '../Cards';
+import { auth, db } from '../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { convertFromRaw, Editor, EditorState } from 'draft-js';
+import AOS from 'aos'; 
+import 'aos/dist/aos.css'
 
 const JobDetails = () => {
   const location = useLocation();
@@ -17,7 +19,7 @@ const JobDetails = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState();
 
-
+  useEffect(() => { AOS.init({ duration: 1200 });},[]); 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -77,6 +79,7 @@ const JobDetails = () => {
  
 
   return (
+    <div  style={{marginTop:'150px',marginBottom:'30px'}}>
     <div className='container mt-3'>
       <div className='row'>
         <div className='col-4 d-none d-sm-block'>
@@ -84,7 +87,7 @@ const JobDetails = () => {
             <>
               <ul style={{ display: 'flex', flexDirection: 'column', listStyleType: 'none', padding: '0', overflowY: 'auto', height: '200vh' }}>
                 {currentJobs.map((job, index) => (
-                  <li key={index} style={{ marginBottom: '10px' }}>
+                  <li key={index} style={{ marginBottom: '10px' }}  data-aos="flip-left">
                     <Cards job={job} />
                   </li>
                 ))}
@@ -104,7 +107,7 @@ const JobDetails = () => {
           )}
         </div>
         <div className={`col-md-8 col-sm-12 ${style.jobDetailCard}`}>
-        <div className={`p-3 ${style.profile}`} style={{ position: 'relative' }}>
+   <div className={`p-3 ${style.profile}`} style={{ position: 'relative' }}  data-aos="fade-up">
 
    <div className='d-flex'>
      {job.imageUrl && 
@@ -144,28 +147,28 @@ const JobDetails = () => {
 
 
 
-<div className={style.profile}>
-<div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class={style.card}>
+<div className={style.profile} data-aos="fade-up">
+<div className="container">
+        <div className="row">
+            <div className="col-md-6">
+                <div className={style.card}>
                     <div>
                         <h5>Application Start Date</h5>
                         <p>{job.startDate}</p>
                     </div>
-                    <div class={style.cardIcon}>
-                        <i class="bi bi-calendar"></i>
+                    <div className={style.cardIcon}>
+                        <i className="bi bi-calendar"></i>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div  class={style.card}>
+            <div className="col-md-6">
+                <div  className={style.card}>
                     <div>
                         <h5>Application End Date</h5>
                         <p>{job.endedDate}</p>
                     </div>
-                    <div class={style.cardIcon}>
-                        <i class="bi bi-calendar"></i>
+                    <div className={style.cardIcon}>
+                        <i className="bi bi-calendar"></i>
                     </div>
                 </div>
             </div>
@@ -173,7 +176,7 @@ const JobDetails = () => {
     </div>
     </div>
 
-          <div className={style.profile}>
+          <div className={style.profile} data-aos="fade-up">
             <h4>Job Description</h4>
             <Editor
               editorState={editorStateJobDescription}
@@ -203,33 +206,33 @@ const JobDetails = () => {
             />
  
           </div>
-          <div class="container mt-5">
+          <div className="container mt-5" >
         <h4>More Information</h4>
-        <div class="row">
-            <div class="col-md-6">
-                <div class={style.infoCard}>
-                <i class="bi bi-cash-coin fs-1"></i>
+        <div className="row">
+            <div className="col-md-6" data-aos="fade-up">
+                <div className={style.infoCard}>
+                <i className="bi bi-cash-coin fs-1"></i>
                     <h6>Package</h6>
                     <p>{job.CTC}</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class={style.infoCard}>
-                <i class="bi bi-briefcase-fill fs-1"></i>
+            <div className="col-md-6" data-aos="fade-up">
+                <div className={style.infoCard}>
+                <i className="bi bi-briefcase-fill fs-1"></i>
                     <h6>Minimum Experience</h6>
                     <p>{job.Experience}</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class={style.infoCard}>
-                <i class="bi bi-geo-alt-fill fs-1"></i>
+            <div className="col-md-6" data-aos="fade-up">
+                <div className={style.infoCard}>
+                <i className="bi bi-geo-alt-fill fs-1"></i>
                     <h6>Job Location</h6>
                     <p>{job.location}</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class={style.infoCard}>
-                <i class="bi bi-clock-fill fs-1"></i>
+            <div className="col-md-6" data-aos="fade-up">
+                <div className={style.infoCard}>
+                <i className="bi bi-clock-fill fs-1"></i>
                     <h6>Work Type</h6>
                     <p>{job.workType}</p>
                 </div>
@@ -238,6 +241,7 @@ const JobDetails = () => {
     </div> 
         </div>
       </div>
+    </div>
     </div>
   );
 };

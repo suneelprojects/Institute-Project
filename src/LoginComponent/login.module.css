@@ -1,12 +1,21 @@
 .container{
-    border: 1px solid #5451A6;
+    border: 1px solid #c7c5e9;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+.container:hover{
+  box-shadow: 0px 5px 10px  rgb(143, 141, 207) !important ;;
+    
 }
 .button{
-    background-color: #5451A6;
-    color: white;
-    display: flex;
-    justify-content: center;
+    background-color:  #5451A6  !important ;
+    color: white !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+.login{
+    margin-top: 150px !important;
+  
 }
