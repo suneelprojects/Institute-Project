@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { db } from '../../firebase';
+import { db } from '../../firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import job from '../../assets/job.avif';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useNavigate } from 'react-router-dom';
-import Cards from '../Cards';
+import Cards from '../Cards.js';
 import Job from '../../assets/Tiny people searching for business opportunities.jpg'
 import jobstyle from '../JobDetailsComponent/jobDetails.module.css'
 
@@ -29,6 +29,7 @@ const JobListing = () => {
       const querySnapshot = await getDocs(collection(db, "Users"));
       const jobsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setJobs(jobsData);
+      console.log('Filtered Jobs:', filteredJobs);
     };
     fetchJobs();
   }, []);
@@ -78,16 +79,26 @@ const JobListing = () => {
   const handleExperienceChange = (e) => setSelectedExperience(e.target.value);
   const handleSalaryChange = (e) => setSelectedSalary(e.target.value);
   const handlePositionChange = (e) => setSelectedPosition(e.target.value);
-  const handleLocationChange = (e) => setSelectLocation(e.target.value);
+  // const handleLocationChange = (e) => setSelectLocation(e.target.value);
   const handleSearch = (e) => setSearchTerm(e.target.value);
   const [isScaled, setIsScaled] = useState(false); 
   const handleCardClick = () => { setIsScaled(!isScaled); };
+
+  const handleLocationChange = (e) => {
+    const selectedLocation = e.target.value;
+    setSelectLocation(selectedLocation);
+    console.log('Selected Location:', selectedLocation);
+  };
+  
+
 
 
   useEffect(() => { AOS.init({ duration: 1200 });},[]); // Customize AOS settings here },
   return (
     <div>
-      <div className='container' style={{marginTop:'170px',marginBottom:'30px'}}>
+      <div className='container-fluid' style={{marginTop:'170px',marginBottom:'30px'}}>
+      <div className='container'>
+
         <div className='h-100' data-aos="zoom-in-up">
         <img
           src={Job}
@@ -181,7 +192,7 @@ cursor: 'pointer'
 </select>
           <div style={{ display: 'flex', flexWrap: 'wrap', listStyleType: 'none', padding: '0'}}>
            {currentJobs.map((job, index) => (
-            <div key={index} style={{ flex: '1 0 30%', margin: '10px' }} data-aos="flip-left">
+            <div key={index} style={{ flex: '1 0 30%', margin: '10px' }}  data-aos="flip-left" >
               <Cards job={job} onViewClick={() => handleViewClick(job)}/>
             </div>
           ))}
@@ -199,6 +210,7 @@ cursor: 'pointer'
             ))}
           </ul>
         </nav>
+        </div>
         </div>
         </div>
         );

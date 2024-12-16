@@ -29,6 +29,7 @@
    border-radius: 4px;
   padding: 5px 10px;
   margin-bottom: 8px;
+  font-size: 15px;
 }
 .card {
   display: flex;
@@ -54,7 +55,7 @@
 .infoCard i {
   width: 35px;
   height: 35px;
-  color: #53518ddc;
+  color: #3c398cdc;
 }
 .Learntag{
   text-decoration: none;

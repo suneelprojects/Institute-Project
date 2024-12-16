@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { db, storage } from '../firebase';
+import { db, storage } from '../firebase.js';
 import { setDoc, doc } from 'firebase/firestore';
 import style from './host.module.css';
 import { Editor } from 'react-draft-wysiwyg';
@@ -74,70 +74,71 @@ const Host = () => {
     }
   };
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate form fields
     const isEmptyField = Object.values(formInput).some(field => field === '');
     if (isEmptyField || !image) {
-      alert('Please fill in all fields and upload an image.');
-      return; // Prevent form submission
+        alert('Please fill in all fields and upload an image.');
+        return; // Prevent form submission
     }
 
     try {
-      const imageRef = ref(storage, `images/${image.name}`);
-      await uploadBytes(imageRef, image);
-      const url = await getDownloadURL(imageRef);
-      setImageUrl(url); // Set the image URL for display
+        const imageRef = ref(storage, `images/${image.name}`);
+        await uploadBytes(imageRef, image);
+        const url = await getDownloadURL(imageRef);
+        setImageUrl(url); // Set the image URL for display
 
-      // Get the content from the editors
-      const whatYouWillBringContent = convertToRaw(editorStateWhatYouWillBring.getCurrentContent());
-      const jobDescriptionContent = convertToRaw(editorStateJobDescription.getCurrentContent());
+        // Get the content from the editors
+        const whatYouWillBringContent = convertToRaw(editorStateWhatYouWillBring.getCurrentContent());
+        const jobDescriptionContent = convertToRaw(editorStateJobDescription.getCurrentContent());
 
-      const userData = {
-        ...formInput,
-        tags: tags,
-        imageUrl: url,
-        jobDescription: JSON.stringify(jobDescriptionContent),
-        whatYouWillBring: JSON.stringify(whatYouWillBringContent),
-      };
+        const userData = {
+            ...formInput,
+            tags: tags,
+            imageUrl: url,
+            jobDescription: JSON.stringify(jobDescriptionContent),
+            whatYouWillBring: JSON.stringify(whatYouWillBringContent),
+        };
 
-      const formDocRef = doc(db, "Users", new Date().getTime().toString());
-      await setDoc(formDocRef, userData);
+        const formDocRef = doc(db, "Users", new Date().getTime().toString());
+        await setDoc(formDocRef, userData);
 
-      console.log('Data stored successfully');
-      toast.success('Data stored successfully')
-      // Reset form after successful submission
-      setFormInput({
-        companyName: '',
-        location: '',
-        CTC: '',
-        position: '',
-        startDate: '',
-        endedDate: '',
-        companyLink: '',
-        workLocation: '',
-        Experience: '',
-        workType: '',
-        applyLink:'',
-      });
-      setTags([]);
-      setTagInput('');
-      setImage(null);
-      setImageUrl(''); // Reset image URL
-      setEditorStateJobDescription(EditorState.createEmpty());
-      setEditorStateWhatYouWillBring(EditorState.createEmpty());
+        console.log('Data stored successfully');
+        toast.success('Data stored successfully');
+
+        // Reset form after successful submission
+        setFormInput({
+            companyName: '',
+            location: '',
+            CTC: '',
+            position: '',
+            startDate: '',
+            endedDate: '',
+            companyLink: '',
+            workLocation: '',
+            Experience: '',
+            workType: '',
+            applyLink: '',
+        });
+        setTags([]);
+        setTagInput('');
+        setImage(null);
+        setImageUrl(''); // Reset image URL
+        setEditorStateJobDescription(EditorState.createEmpty());
+        setEditorStateWhatYouWillBring(EditorState.createEmpty());
     } catch (error) {
-      console.error('Error storing data: ', error);
-      toast.error('Data is not Not stored in firebase')
+        console.error('Error storing data: ', error);
+        toast.error('Data is not stored in Firebase');
     }
-  
-  };
-
+};
 
   return (
-    <div className='m-2'>
-           <div className={`container mt-5 ${style.host}`}>
+    <div style={{marginTop:'150px'}} >
+           <div className={`container mt-5 p-3 ${style.host}`}>
              <h1>Post</h1>
              <form onSubmit={handleSubmit}>
                <div className="form-group">
@@ -187,6 +188,7 @@ const Host = () => {
                   placeholder="Enter Company Name"
                   name='companyName'
                   onChange={changeHandler}
+                  value={formInput.companyName}
                   required
                 />
               </div>
@@ -201,6 +203,7 @@ const Host = () => {
                   placeholder="Enter Location"
                   name='location'
                   onChange={changeHandler}
+                  value={formInput.location}
                   required
                 />
               </div>
@@ -216,6 +219,7 @@ const Host = () => {
   className="form-control mx-2"
   onChange={changeHandler}
   name='CTC'
+  value={formInput.CTC}
 >
   <option value="all">All Salaries</option>
   <option value="0-3 LPA">0-3 LPA</option>
@@ -234,6 +238,7 @@ const Host = () => {
           onChange={changeHandler}
           name='position' // Ensure this matches formInput
           required
+          value={formInput.position}
         >
           <option value=''>Select a Positon</option>
           <option value='Full Stack Java Developer'> Full Stack Java Developer</option>
@@ -263,7 +268,7 @@ const Host = () => {
                 <div className="input-group mb-3">
                   <input
                     type="text"
-                    value={tagInput}
+                    value={formInput.tags}
                     onChange={handleTagInputChange}
                     onKeyDown={handleTagInputKeyDown}
                     className="form-control"
@@ -291,6 +296,8 @@ const Host = () => {
                   name='startDate'
                   onChange={changeHandler}
                   required
+                  value={formInput.startDate}
+
                 />
               </div>
             </div>
@@ -304,6 +311,7 @@ const Host = () => {
                   placeholder="Enter Application End Date"
                   name='endedDate'
                   onChange={changeHandler}
+                  value={formInput.endedDate}
                   required
                 />
               </div>
@@ -320,6 +328,7 @@ const Host = () => {
                   placeholder="https://www.ibm.com/in-en"
                   name='companyLink'
                   onChange={changeHandler}
+                  value={formInput.companyLink}
                   required
                 />
               </div>
@@ -332,6 +341,8 @@ const Host = () => {
           className='form-control' 
           onChange={changeHandler}
           name='workLocation' // Ensure this matches formInput
+          value={formInput.workLocation}
+
           required
         >
           <option value=''>Select a location</option>
@@ -351,6 +362,8 @@ const Host = () => {
           className='form-control' 
           onChange={changeHandler}
           name="Experience" // Ensure this matches formInput
+          value={formInput.Experience}
+
           required
         >
           <option value=''>Select experience level</option>
@@ -370,6 +383,7 @@ const Host = () => {
           className='form-control' 
           onChange={changeHandler}
           name='workType' // Ensure this matches formInput
+          value={formInput.workType}
           required
         >
           <option value=''>Select a work type</option>
@@ -432,6 +446,7 @@ const Host = () => {
                                 onChange={changeHandler}
                                 name='applyLink'
                                 placeholder='https://www.amazon'
+                  value={formInput.applyLink}
                                 required
                                  ></input>
                                  </div>

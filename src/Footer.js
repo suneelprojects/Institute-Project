@@ -1,5 +1,6 @@
 import React from 'react';
 import sh from '../src/assets/socialhire.png';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -8,7 +9,7 @@ function Footer() {
       <div className="row">
         <div className="col-md-6">
           <h4 className="text-white mb-4">About Us</h4>
-          <img src={sh} width={250} height={70}></img>
+         <Link to='/'><img src={sh} width={250} height={70}></img></Link> 
           <p className="text-white mb-4">socialHire is one stop solution for engineers and graduates! A platform to learn in community, explore campuses & get placed in dream companies.</p>
           <p className="text-white mb-4"><i className="bi bi-geo-alt"></i> #508, 5th Floor,
 Manjeera Majestic Commercial,
@@ -30,10 +31,10 @@ Contact: +91-8019 479 419</p>
 <div className='col-md-2'></div>
        <div className='col-md-3' style={{textDecoration:'none'}}>
        <h4 className='text-white'>Our Links</h4>
-       <p><a href='/jobs'  className="text-white" style={{textDecoration:'none'}}>Jobs</a></p> 
-        <p><a href='/resumechecker' className="text-white" style={{textDecoration:'none'}}>Resume Checker</a></p>
-        <p><a href='/mentorship' className="text-white" style={{textDecoration:'none'}}>Mentorship</a></p>
-       <p><a href='/login' className="text-white" style={{textDecoration:'none'}}>Login</a></p>
+       <p><Link to='/'  className="text-white" style={{textDecoration:'none'}}>Curated Jobs</Link></p> 
+        <p><Link to='/resumechecker' className="text-white" style={{textDecoration:'none'}}>Resume Checker</Link></p>
+        <p><Link to='/mentorship' className="text-white" style={{textDecoration:'none'}}>Book Mentor</Link></p>
+       <p><Link to='/placement' className="text-white" style={{textDecoration:'none'}}>Placement Preparation</Link></p>
       </div>
 
    

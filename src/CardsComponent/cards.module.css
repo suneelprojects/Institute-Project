@@ -4,17 +4,20 @@
   flex-direction: column; 
   justify-content: space-between; 
   border-radius: 10px;
-  border: 1px solid #bbb9ed94;
+  /* border: 1px solid #bbb9ed94; */
   margin: 16px;
   margin-bottom: 10px;
   max-width: 350px;
   height: 100%;
   transition: transform 0.2s ease-in-out;
+  background-color: white;
+  /* box-shadow: 0 6px 10px hsla(240, 51%, 77%, 0.514); */
+  box-shadow: 0 4px 8px #adacac;
+
 }
 
 .jobCard:hover {
   transform: scale(1.05); 
-  box-shadow: 0 6px 10px #aaaae2;
 }
 
 .cardBody {
@@ -58,17 +61,28 @@
   border-radius: 4px;
   padding: 5px 10px;
   margin-bottom: 8px;
-  border-radius: 20px;
+  font-size: 12px !important;
+  /* border-radius: 20px; */
 }
+
+/* .blink {
+  animation: zoomRotateBlink 1s linear infinite;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+} */
 
 .blink {
   animation: zoomRotateBlink 1s linear infinite;
   color: red;
   font-weight: bold;
   text-align: center;
+  background-color: rgba(255, 0, 0,0.1);
+  /* border: 1px solid  red; */
+  border-radius: 10px;
 }
 
-@keyframes zoomRotateBlink {
+/* @keyframes zoomRotateBlink {
   0% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
@@ -89,11 +103,18 @@
     transform: scale(1) rotate(0deg);
     opacity: 1;
   }
-}
+} */
 
 
 .expiredCard {
   background-color: #f8d7da; /* Light red background */
   border-color: #f5c6cb; /* Red border */
   color: #721c24; /* Dark red text */
+}
+.available{
+  color: green;
+  /* border: 1px solid green; */
+  background-color: rgba(214, 230, 214, 0.6);
+  border-radius: 10px;
+  font-size: 15px;
 }

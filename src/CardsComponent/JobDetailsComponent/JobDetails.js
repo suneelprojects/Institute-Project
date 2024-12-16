@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import style from './jobDetails.module.css';
-import Cards from '../Cards';
-import { auth, db } from '../../firebase';
+import Cards from '../Cards.js';
+import { auth, db } from '../../firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { convertFromRaw, Editor, EditorState } from 'draft-js';
 import AOS from 'aos'; 
@@ -87,7 +87,7 @@ const JobDetails = () => {
             <>
               <ul style={{ display: 'flex', flexDirection: 'column', listStyleType: 'none', padding: '0', overflowY: 'auto', height: '200vh' }}>
                 {currentJobs.map((job, index) => (
-                  <li key={index} style={{ marginBottom: '10px' }}  data-aos="flip-left">
+                  <li key={index} style={{ marginBottom: '10px' }} >
                     <Cards job={job} />
                   </li>
                 ))}
@@ -118,24 +118,19 @@ const JobDetails = () => {
       />
     }
     <div className='d-block m-3'>
-      <h2>{job.position}</h2>
+      <h4 className='fs-3 fw-bold'>{job.position}</h4>
       <a href={job.companyLink} target="_blank" rel="noopener noreferrer" className={style.companyLink}>
-      {job.companyName} <i className="bi bi-box-arrow-up-right"></i>
+     <b className='fs-5'>{job.companyName}</b> <i className="bi bi-box-arrow-up-right"></i>
       </a>
-      <p style={{fontSize:'20px'}}>{job.workLocation}</p>
+     <p><b style={{fontSize:'17px'}}>{job.workLocation}</b></p> 
     </div>
     
     {/* Apply Now Button positioned absolutely */}
     <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
-  {user ? (
+
     <a href={job.applyLink} className='btn' style={{ backgroundColor: '#5451A6', color: 'white' }}>
       Apply Now <i className="bi bi-box-arrow-up-right"></i>
     </a>
-  ) : (
-    <button className='btn' onClick={() => navigate('/login')} style={{ backgroundColor: '#5451A6', color: 'white' }}>
-      Apply Now <i className="bi bi-box-arrow-up-right"></i>
-    </button>
-  )}
 </div>
   </div>
   <div className={style.tags}>
@@ -153,7 +148,7 @@ const JobDetails = () => {
             <div className="col-md-6">
                 <div className={style.card}>
                     <div>
-                        <h5>Application Start Date</h5>
+                        <h5 className='fw-bold'>Application Start Date</h5>
                         <p>{job.startDate}</p>
                     </div>
                     <div className={style.cardIcon}>
@@ -164,7 +159,7 @@ const JobDetails = () => {
             <div className="col-md-6">
                 <div  className={style.card}>
                     <div>
-                        <h5>Application End Date</h5>
+                        <h5 className='fw-bold'>Application End Date</h5>
                         <p>{job.endedDate}</p>
                     </div>
                     <div className={style.cardIcon}>
@@ -177,7 +172,7 @@ const JobDetails = () => {
     </div>
 
           <div className={style.profile} data-aos="fade-up">
-            <h4>Job Description</h4>
+            <h4 className='fw-bold'>Job Description</h4>
             <Editor
               editorState={editorStateJobDescription}
               toolbarClassName="toolbarClassName"
@@ -185,7 +180,7 @@ const JobDetails = () => {
               editorClassName="editorClassName"
               readOnly={true} // Set readOnly to true to prevent editing
             />
-            <h4> Required Skills</h4>
+            <h4 className='fw-bold'> Required Skills</h4>
             <div className={style.tags}>
         {job.tags && job.tags.map((tag, index) => (
          <span key={index} className={`${style.tag}`}># {tag}</span>
@@ -196,7 +191,7 @@ const JobDetails = () => {
          <h6><a key={index} href='https://socialprachar.in' className={`${style.Learntag}`}>Learn {tag}</a></h6>
         ))}
       </div>  
-            <h4>What You Will Bring</h4>
+            <h4 className='fw-bold'>What You Will Bring</h4>
             <Editor
               editorState={editorStateWhatYouWillBring}
               toolbarClassName="toolbarClassName"
@@ -207,33 +202,33 @@ const JobDetails = () => {
  
           </div>
           <div className="container mt-5" >
-        <h4>More Information</h4>
+        <h4 className='fw-bold'>More Information</h4>
         <div className="row">
             <div className="col-md-6" data-aos="fade-up">
                 <div className={style.infoCard}>
                 <i className="bi bi-cash-coin fs-1"></i>
-                    <h6>Package</h6>
+                    <h6 className='fw-bold'>Package</h6>
                     <p>{job.CTC}</p>
                 </div>
             </div>
             <div className="col-md-6" data-aos="fade-up">
                 <div className={style.infoCard}>
                 <i className="bi bi-briefcase-fill fs-1"></i>
-                    <h6>Minimum Experience</h6>
+                    <h6 className='fw-bold'>Minimum Experience</h6>
                     <p>{job.Experience}</p>
                 </div>
             </div>
             <div className="col-md-6" data-aos="fade-up">
                 <div className={style.infoCard}>
                 <i className="bi bi-geo-alt-fill fs-1"></i>
-                    <h6>Job Location</h6>
+                    <h6 className='fw-bold'>Job Location</h6>
                     <p>{job.location}</p>
                 </div>
             </div>
             <div className="col-md-6" data-aos="fade-up">
                 <div className={style.infoCard}>
                 <i className="bi bi-clock-fill fs-1"></i>
-                    <h6>Work Type</h6>
+                    <h6 className='fw-bold'>Work Type</h6>
                     <p>{job.workType}</p>
                 </div>
             </div>

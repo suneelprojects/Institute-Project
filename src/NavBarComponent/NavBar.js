@@ -256,15 +256,17 @@
 
 
 
-
 import React, { useEffect } from 'react';
 import navBarStyle from './navbar.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/socialhire.png';
 import AOS from 'aos'; 
 import 'aos/dist/aos.css';
+import { auth } from '../firebase.js'; // Ensure correct import for Firebase auth
 
 const NavBar = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
@@ -282,10 +284,22 @@ const NavBar = () => {
     };
   }, []);
 
-  useEffect(() => { AOS.init({ duration: 1200 })},[]); // Initialize AOS with desired options }, []);
+  useEffect(() => { AOS.init({ duration: 1200 })},[]); // Initialize AOS with desired options
+
+  const handleLogout = () => {
+    auth.signOut()
+      .then(() => {
+        console.log('User signed out');
+        navigate('/home'); // Redirect to login page after logout
+      })
+      .catch((error) => {
+        console.error('Error signing out:', error);
+      });
+  };
+
   return (
     <div style={{ position: 'fixed', width: '100%', top: '0', zIndex: '1000' }} data-aos="fade-up">
-      <nav className={`navbar navbar-expand-lg navbar-dark px-3 py-1 ${navBarStyle.navbar}`}>
+      <nav className={`navbar navbar-expand-lg navbar-dark px-3 py-2 ${navBarStyle.navbar}`}>
         <div className='container-fluid'>
           <Link className={`navbar-brand ${navBarStyle.navbarIcon}`} to='/'>
             <img src={logo} alt="icon" width="auto" height="70" />
@@ -299,19 +313,25 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
-                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter}`} to='/'>Jobs</Link></h5>
+                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter}`} to='/'>Curated Jobs</Link></h5>
               </li>
               <li className="nav-item">
                 <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/resumechecker'>Resume checker</Link></h5>
               </li>
               <li className="nav-item">
-                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/mentorship'>Mentorship</Link></h5>
+                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/mentorship'>Book Mentor</Link></h5>
+              </li>
+              <li className="nav-item">
+                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/placement'>Placement Preparation</Link></h5>
               </li>
             </ul>
 
             <ul className="navbar-nav ms-auto">
+              {/* <li className="nav-item">
+                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.login}`} to='/login' style={{ cursor: 'pointer' }}>Login</Link></h5>
+              </li> */}
               <li className="nav-item">
-                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.login}`} to='/login'>Login</Link></h5>
+                <h5><a className={`nav-link ${navBarStyle.navlink} ${navBarStyle.login}`} onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</a></h5>
               </li>
             </ul>
           </div>
