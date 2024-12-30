@@ -10,7 +10,8 @@
 }
 
 .navbar.scrolled {
-  background-color: #5451A6 !important; 
+  /* background-color: #5451A6 !important;  */
+  background: linear-gradient(90deg, #014589, #024e75, #03709f);
   color: white !important;
 }
 

@@ -422,7 +422,7 @@ const Login = ({ setIsAuthenticated }) => { // Accept setIsAuthenticated as a pr
                 <button type="submit" className='btn btn-primary'>Log In</button>
               </div>
               <div className='d-flex justify-content-between mt-3'>
-                <p className='text-white'>Don't have an account? <b  ><a className='text-primary' onClick={handleSignUp} style={{ cursor: 'pointer' }}>Sign Up</a></b></p>
+                <p className='text-white'>Don't have an account? <b  ><a className='text-primary' onClick={handleSignUp} style={{ cursor: 'pointer',color:'white' }}>Sign Up</a></b></p>
                 <p className='text-white' onClick={handleForgotPassword} style={{ cursor: 'pointer' }}><b>Forgot Password?</b></p>
               </div>
             </form>

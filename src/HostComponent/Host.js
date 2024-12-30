@@ -268,7 +268,7 @@ const Host = () => {
                 <div className="input-group mb-3">
                   <input
                     type="text"
-                    value={formInput.tags}
+                    value={tagInput} // Use tagInput here
                     onChange={handleTagInputChange}
                     onKeyDown={handleTagInputKeyDown}
                     className="form-control"

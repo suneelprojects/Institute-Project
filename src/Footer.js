@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <div className="container-fluid bg-teal-500 p-5 mt-5" style={{backgroundColor:' #5451A6'}}>
+ 
+  <div className="container-fluid bg-teal-500 p-5 mt-5" style={{ background: 'linear-gradient(90deg, #014589, #024e75, #03709f)'}}>
       <div className='container'>
       <div className="row">
         <div className="col-md-6">

@@ -206,11 +206,12 @@ import JobListing from './CardsComponent/JoblistingComponent/JobListing.js';
 import Login from './LoginComponent/Login.js';
 import SignUp from './LoginComponent/SignUp.js';
 import ResumeChecker from './ResumeCheckerComponent/ResumeChecker.js';
-import Mentorship from './MentorshipComponent/Mentorship.js';
 import Home from './HomeComponent/Home.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { auth } from './firebase.js';
 import Placement from './PlacementPreparationComponent/Placement.js';
+import JobData from './CardsComponent/MobileViewCardsComponent/JobData.js';
+import BookMentor from './BookMentorComponent/BookMentor.js';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -238,14 +239,16 @@ const App = () => {
         {isAuthenticated ? (
           <>
             <Route path="/" element={<JobListing />} />
+            <Route path="/joblisting" element={<JobListing />} />
             <Route path="/host" element={<Host />} />
             <Route path="/jobDetails" element={<JobDetails />} />
             <Route path="/resumechecker" element={<ResumeChecker />} />
-            <Route path="/mentorship" element={<Mentorship />} />
+            <Route path="/mentorship" element={<BookMentor />} />
             <Route path="/login" element={<Navigate to="/" />} />
             <Route path="/home" element={<Navigate to="/" />} />
             <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="/jobListing" element={<JobListing />} />
+            <Route path="/jobData" element={<JobData/>} />
             <Route path='/placement' element={<Placement/>}></Route>
           </>
         ) : (
