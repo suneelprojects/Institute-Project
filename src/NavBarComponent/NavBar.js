@@ -316,7 +316,7 @@ const NavBar = () => {
                 <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter}`} to='/'>Curated Jobs</Link></h5>
               </li>
               <li className="nav-item">
-                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/resumechecker'>Resume checker</Link></h5>
+                <h5><a href='https://socialhire.in/resume-checker' style={{textDecoration:'none'}} className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`}>Resume Checker</a></h5>
               </li>
               <li className="nav-item">
                 <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/mentorship'>Book Mentor</Link></h5>
