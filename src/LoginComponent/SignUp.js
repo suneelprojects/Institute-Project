@@ -355,109 +355,365 @@
 
 
 
+
+// import React, { useState } from 'react';
+// import { auth, db } from '../firebase.js'; // Ensure this path is correct
+// import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+// import { doc, getDoc, setDoc } from 'firebase/firestore';
+// import styles from './login.module.css';
+// import { useNavigate } from 'react-router';
+// import { toast, ToastContainer } from 'react-toastify';
+// import logo from '../assets/socialhire.png';
+// import { Link } from 'react-router-dom';
+// import google from '../assets/icons8-google-48.png';
+
+// const Signup = ({ onClose }) => {
+//     const [name, setName] = useState('');
+//     const [email, setEmail] = useState('');
+//     const [phone, setPhone] = useState('');
+//     const [password, setPassword] = useState('');
+//     const navigate = useNavigate();
+//     const provider = new GoogleAuthProvider();
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//         createUserWithEmailAndPassword(auth, email, password)
+//             .then(async (userCredential) => {
+//                 const user = userCredential.user;
+//                 console.log('User  signed up:', user);
+
+//                 await setDoc(doc(db, "users", user.uid), {
+//                     name: name,
+//                     email: email,
+//                     phone: phone,
+//                 });
+
+//                 toast.success('User  signed up successfully');
+//                 navigate('/login');
+//             })
+//             .catch((error) => {
+//                 const errorCode = error.code;
+//                 const errorMessage = error.message;
+//                 console.error('Error signing up:', errorCode, errorMessage);
+//                 toast.error('Error signing up: ' + errorMessage);
+//             });
+//     };
+
+    // const handleSignIn = () => {
+    //     navigate('/login');
+    // };
+
+    // const handleGoogleSignIn = async () => {
+    //     try {
+    //         const result = await signInWithPopup(auth, provider);
+    //         const user = result.user;
+    //         console.log('User  signed in with Google:', user);
+
+    //         // Save additional user info to Firestore if needed
+    //         await setDoc(doc(db, "users", user.uid), {
+    //             name: user.displayName,
+    //             email: user.email,
+    //             phone: phone, // You might want to handle phone differently for Google sign-in
+    //         });
+
+    //         toast.success('User  signed in with Google successfully');
+    //         navigate('/login');
+    //     } catch (error) {
+    //         const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //         console.error('Error signing in with Google:', errorCode, errorMessage);
+    //         toast.error('Error signing in with Google: ' + errorMessage);
+    //     }
+    // };
+
+
+
+
+//     const handleGoogleSignIn = async () => {
+//         try {
+//             const result = await signInWithPopup(auth, provider);
+//             const user = result.user;
+//             console.log('User  signed in with Google:', user);
+
+//             // Check if user has additional info
+//             const userDoc = await getDoc(doc(db, "users", user.uid));
+//             if (!userDoc.exists()) {
+//                 // Redirect to profile completion form
+//                 navigate('/completeProfile', { state: { uid: user.uid, email: user.email, displayName: user.displayName } });
+//             } else {
+//                 // User already has additional info
+//                 toast.success('User  signed in with Google successfully');
+//                 navigate('/home');
+//             }
+//         } catch (error) {
+//             const errorCode = error.code;
+//             const errorMessage = error.message;
+//             console.error('Error signing in with Google:', errorCode, errorMessage);
+//             toast.error('Error signing in with Google: ' + errorMessage);
+//         }
+//     };
+    
+
+//     return (
+//         <>
+//             <div className={styles.overlay} onClick={onClose} />
+//             <div className={`${styles.modal}`}>
+//                 <button onClick={onClose} className={styles.closeBtn}>X</button>
+//                 <form onSubmit={handleSubmit} className={`${styles.form}`}>
+//                     <input
+//                         type="name"
+//                         value={name}
+//                         onChange={(e) => setName(e.target.value)}
+//                         placeholder="Name"
+//                         className='form-control mb-3'
+//                         required
+//                     />
+//                     <input
+//                         type="email"
+//                         value={email}
+//                         onChange={(e) => setEmail(e.target.value)}
+//                         placeholder="Email"
+//                         className='form-control mb-3'
+//                         required
+//                     />
+//                     <input
+//                         type="tel"
+//                         value={phone}
+//                         onChange={(e) => setPhone(e.target.value)}
+//                         placeholder="Phone Number"
+//                         className='form-control mb-3'
+//                         required
+//                     />
+//                     <input
+//                         type="password"
+//                         value={password}
+//                         onChange={(e) => setPassword(e.target.value)}
+//                         placeholder="Password"
+//                         className='form-control mb-3'
+//                         required
+//                     />
+//                     <div className='d-flex justify-content-center'>
+//                         <button type="submit" className='btn btn-primary'>Sign Up</button>
+//                     </div>
+//                     <div className='d-flex justify-content-center mt-3'>
+//                         <button type="button" onClick={handleGoogleSignIn} className='btn btn-light'>
+//                             <img src={google} alt='googleicon' width={30} height={30}></img>
+//                             Continue with Google
+//                         </button>
+//                     </div>
+
+//                 </form>
+//             </div>
+//             <ToastContainer />
+//         </>
+//     );
+// };
+
+// export default Signup;
+
+
+
+
+
+
+// // SignUp.js
+// import React, { useState } from 'react';
+// import { auth, db } from '../firebase.js';
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import { doc, setDoc } from 'firebase/firestore';
+// import styles from './login.module.css';
+// import { useNavigate } from 'react-router';
+// import { toast, ToastContainer } from 'react-toastify';
+
+// const Signup = ({ onClose }) => {
+//   const [name, setName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [phone, setPhone] = useState('');
+//   const [password, setPassword] = useState('');
+//   const navigate = useNavigate();
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     createUserWithEmailAndPassword(auth, email, password)
+//       .then(async (userCredential) => {
+//         const user = userCredential.user;
+//         await setDoc(doc(db, "users", user.uid), {
+//           name,
+//           email,
+//           phone,
+//         });
+//         toast.success('User signed up successfully');
+//         onClose(); // Close modal after signup
+//       })
+//       .catch((error) => {
+//         const errorMessage = error.message;
+//         toast.error(`Error signing up: ${errorMessage}`);
+//       });
+//   };
+
+//   return (
+//     <div className={styles.modalContent}>
+//       <form onSubmit={handleSubmit} className={styles.form}>
+//         <input
+//           type="name"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//           placeholder="Name"
+//           className='form-control mb-3'
+//           required
+//         />
+//         <input
+//           type="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           placeholder="Email"
+//           className='form-control mb-3'
+//           required
+//         />
+//         <input
+//           type="tel"
+//           value={phone}
+//           onChange={(e) => setPhone(e.target.value)}
+//           placeholder="Phone Number"
+//           className='form-control mb-3'
+//           required
+//         />
+//         <input
+//           type="password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           placeholder="Password"
+//           className='form-control mb-3'
+//           required
+//         />
+//         <div className='d-flex justify-content-center'>
+//           <button type="submit" className='btn btn-primary'>Sign Up</button>
+//         </div>
+//       </form>
+//       <ToastContainer />
+//     </div>
+//   );
+// };
+
+// export default Signup;
+
+
+
+
 import React, { useState } from 'react';
 import { auth, db } from '../firebase.js'; // Ensure this path is correct
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import styles from './login.module.css';
 import { useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
-import logo from '../assets/socialhire.png'
-import { Link } from 'react-router-dom';
+import google from '../assets/icons8-google-48.png';
 
-
-const Signup = () => {
-    const [name, setName] = useState('');
+const Signup = ({onClose}) => {
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
     const navigate = useNavigate();
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            console.log('User signed in with Google:', user);
+
+            // Check if user has additional info
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (!userDoc.exists()) {
+                // Redirect to profile completion form
+                navigate('/completeProfile', { state: { uid: user.uid, email: user.email, displayName: user.displayName } });
+            } else {
+                // User already has additional info
+                toast.success('User signed in with Google successfully');
+                navigate('/home');
+            }
+        } catch (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error('Error signing in with Google:', errorCode, errorMessage);
+            toast.error('Error signing in with Google: ' + errorMessage);
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
             .then(async (userCredential) => {
-                // Signed up
                 const user = userCredential.user;
-                console.log('User signed up:', user);
-
-                // Save additional user info to Firestore
                 await setDoc(doc(db, "users", user.uid), {
-                    name: name,
-                    email: email,
-                    phone: phone,
+                    name,
+                    email,
+                    phone,
                 });
-
                 toast.success('User signed up successfully');
-                navigate('/login'); // Redirect to home page or dashboard
+                onClose(); // Close modal after signup
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                console.error('Error signing up:', errorCode, errorMessage);
-                toast.error('Error signing up:', errorMessage);
+                toast.error(`Error signing up: ${errorMessage}`);
             });
     };
 
-    const handleSignIn = () => {
-        navigate('/login');
-    };
-
     return (
-        <div className={`${styles.container}`}>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-md-6 offset-sm-3'>
-                        <form onSubmit={handleSubmit} className={`${styles.form}`}>
-                            <div className='d-flex justify-content-center'>
-              <img src={logo} height={80} width={250}></img>
-              </div>
-              <p className='text-white fs-6 text-center'>Discover endless opportunities with <b>SocialHire</b>, the AI-driven platform connecting
-top talent with innovative employers. Take control of your career growth with
-the support and tools you need to succeed.</p>
-                            <input
-                                type="name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                placeholder="Name"
-                                className='form-control mb-3'
-                                required
-                            />
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Email"
-                                className='form-control mb-3'
-                                required
-                            />
-                            <input
-                                type="tel"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                                placeholder="Phone Number"
-                                className='form-control mb-3'
-                                required
-                            />
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Password"
-                                className='form-control mb-3'
-                                required
-                            />
-                            <div className='d-flex justify-content-center'>
-                                <button type="submit" className='btn btn-primary'>Sign Up</button>
-                            </div>
-                            <p className='text-white mt-3'>Already have an account?<b><a className='text-primary' onClick={handleSignIn} style={{ cursor: 'pointer' }}>Sign In</a></b> </p>
-                        </form>
+        <>
+            <div className={styles.overlay} />
+            <div className={styles.modal}>
+            <button onClick={onClose} className={styles.closeBtn}>X</button>
+                <form onSubmit={handleSubmit} className={styles.form}>
+                    <input
+                        type="name"
+                        className='form-control mb-3'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Name"
+                        required
+                    />
+                    <input
+                        type="email"
+                        className='form-control mb-3'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required
+                    />
+                    <input
+                        type="password"
+                        className='form-control mb-3'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                    />
+                    <input
+                        type="tel"
+                        className='form-control mb-3'
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="Phone Number"
+                        required
+                    />
+                    <div className='d-flex justify-content-center'>
+                        <button type="submit" className='btn btn-primary'>Sign Up</button>
                     </div>
-                </div>
+                    <div className='d-flex justify-content-center mt-3'>
+                        <button type="button" onClick={handleGoogleSignIn} className='btn btn-light'>
+                            <img src={google} alt='googleicon' width={30} height={30}></img>
+                            Continue with Google
+                        </button>
+                    </div>
+                </form>
+                <ToastContainer />
             </div>
-            <ToastContainer/>
-        </div>
+        </>
     );
 };
 
 export default Signup;
+
+

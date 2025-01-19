@@ -255,14 +255,18 @@
 
 
 
-
 import React, { useEffect } from 'react';
 import navBarStyle from './navbar.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/socialhire.png';
+import logo from '../assets/Social_Hire_page-0001-removebg-preview.png';
 import AOS from 'aos'; 
 import 'aos/dist/aos.css';
 import { auth } from '../firebase.js'; // Ensure correct import for Firebase auth
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -284,7 +288,7 @@ const NavBar = () => {
     };
   }, []);
 
-  useEffect(() => { AOS.init({ duration: 1200 })},[]); // Initialize AOS with desired options
+  useEffect(() => { AOS.init({ duration: 1200 }) }, []); // Initialize AOS with desired options
 
   const handleLogout = () => {
     auth.signOut()
@@ -299,16 +303,18 @@ const NavBar = () => {
 
   return (
     <div style={{ position: 'fixed', width: '100%', top: '0', zIndex: '1000' }} data-aos="fade-up">
-      <nav className={`navbar navbar-expand-lg navbar-dark px-3 py-2 ${navBarStyle.navbar}`}>
-        <div className='container-fluid'>
-          <Link className={`navbar-brand ${navBarStyle.navbarIcon}`} to='/'>
-            <img src={logo} alt="icon" width="auto" height="70" />
-          </Link>
-          
-          {/* Toggle button for small screens */}
-          <button className="navbar-toggler mb-1" style={{backgroundColor:'#5451A6'}} type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon text-dark"></span>
-          </button>
+      <nav className={`navbar navbar-expand-lg navbar-dark px-3 py-3 ${navBarStyle.navbar}`}>
+        <div className="container-fluid d-flex justify-content-between align-items-center">
+          <div className='d-sm-flex justify-content-sm-between'>
+            <Link className={`navbar-brand ${navBarStyle.navbarIcon}`} to='/'>
+              <img src={logo} alt="icon" width="180" height="50" />
+            </Link>
+            
+            {/* Toggle button for small screens */}
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" style={{color:'white',backgroundColor:' #024e75'}} data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mx-auto">
@@ -316,20 +322,20 @@ const NavBar = () => {
                 <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter}`} to='/'>Curated Jobs</Link></h5>
               </li>
               <li className="nav-item">
-                <h5><a href='https://socialhire.in/resume-checker' style={{textDecoration:'none'}} className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`}>Resume Checker</a></h5>
+                <h5><a href='https://socialhire.in/resume-checker' style={{ textDecoration: 'none' }} className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`}>Resume Checker</a></h5>
               </li>
               <li className="nav-item">
-                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/mentorship'>Book Mentor</Link></h5>
+                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/bookmentor'>Book Mentor</Link></h5>
               </li>
               <li className="nav-item">
                 <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/placement'>Placement Preparation</Link></h5>
               </li>
+              {/* <li className="nav-item">
+                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.navbarCenter} mx-2`} to='/mentorform'>Placement Preparation</Link></h5>
+              </li> */}
             </ul>
 
             <ul className="navbar-nav ms-auto">
-              {/* <li className="nav-item">
-                <h5><Link className={`nav-link ${navBarStyle.navlink} ${navBarStyle.login}`} to='/login' style={{ cursor: 'pointer' }}>Login</Link></h5>
-              </li> */}
               <li className="nav-item">
                 <h5><a className={`nav-link ${navBarStyle.navlink} ${navBarStyle.login}`} onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</a></h5>
               </li>

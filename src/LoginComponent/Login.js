@@ -349,89 +349,308 @@
 
 
 
+// import React, { useState } from 'react';
+// import { auth } from '../firebase.js'; // Ensure this path is correct
+// import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+// import styles from './login.module.css';
+// import { useNavigate } from 'react-router';
+// import { toast, ToastContainer } from 'react-toastify';
+// import logo from '../assets/socialhire.png';
+// import Signup from './SignUp.js';
+
+// const Login = ({ setIsAuthenticated ,onClose}) => { // Accept setIsAuthenticated as a prop
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const navigate = useNavigate();
+//   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+
+//   const toggleSignUp = () => {
+//     setIsSignUpOpen(!isSignUpOpen);
+//     navigate('/signup');
+
+// };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     signInWithEmailAndPassword(auth, email, password)
+//       .then((userCredential) => {
+//         // Signed in
+//         const user = userCredential.user;
+//         console.log('User signed in:', user);
+//         toast.success('User signed in');
+//         setIsAuthenticated(true); // Update the authenticated state
+//         navigate('/home'); // Navigate to home or dashboard after login
+//       })
+//       .catch((error) => {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//         console.error('Error signing in:', errorCode, errorMessage);
+//         toast.error('Error signing in:', errorMessage);
+//       });
+//   };
+
+//   const handleSignUp = () => {
+//   };
+
+//   const handleForgotPassword = () => {
+//     if (email) {
+//       sendPasswordResetEmail(auth, email)
+//         .then(() => {
+//           toast.success('Password reset email sent!');
+//         })
+//         .catch((error) => {
+//           const errorCode = error.code;
+//           const errorMessage = error.message;
+//           console.error('Error sending password reset email:', errorCode, errorMessage);
+//           toast.error('Error sending password reset email:', errorMessage);
+//         });
+//     } else {
+//       toast.error('Please enter your email address first.');
+//     }
+//   };
+
+
+//     return (
+//       <>
+//       <div className={styles.overlay} onClick={onClose} /> 
+//       <div className={`${styles.modal}`}>
+//           <button onClick={onClose} className={`${styles.closeBtn}`}>X</button>
+//               <form onSubmit={handleSubmit} className={`${styles.form}`}>
+//                   {/* <div className='d-flex justify-content-center align-items-center'>
+//                       <img src={logo} height={80} width={250} alt="SocialHire Logo" />
+//                   </div>
+//                   <p className='text-white fs-6 text-center'>
+//                       Discover endless opportunities with <b>SocialHire</b>, the AI-driven platform connecting
+//                       top talent with innovative employers. Take control of your career growth with
+//                       the support and tools you need to succeed.
+//                   </p> */}
+//                   <input type="email" className='form-control mb-3' value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+//                   <input type="password" className='form-control mb-3' value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+//                   <div className='d-flex justify-content-center'>
+//                       <button type="submit" className='btn btn-primary'>Log In</button>
+//                   </div>
+//                   <div className='d-flex justify-content-between mt-3'>
+//                       {/* <p className='text-white'>Don't have an account? <b><a className='text-primary' onClick={toggleSignUp} style={{ cursor: 'pointer', color: 'white' }}>Sign Up</a></b></p> */}
+//                       <p className='text-white' onClick={handleForgotPassword} style={{ cursor: 'pointer',whiteSpace:'nowrap' }}><b>Forgot Password?</b></p>
+//           </div>
+              
+//               </form>
+
+//           <ToastContainer />
+//       </div>
+//       </>
+//   );
+// };
+
+// export default Login;
+
+
+
+
+
+
+// // Login.js
+// import React, { useState } from 'react';
+// import { auth } from '../firebase.js';
+// import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+// import styles from './login.module.css';
+// import { useNavigate } from 'react-router';
+// import { toast, ToastContainer } from 'react-toastify';
+
+// const Login = ({ setIsAuthenticated, onClose }) => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const navigate = useNavigate();
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     signInWithEmailAndPassword(auth, email, password)
+//       .then((userCredential) => {
+//         const user = userCredential.user;
+//         toast.success('User signed in');
+//         setIsAuthenticated(true);
+//         onClose(); // Close modal after login
+//         navigate('/home'); // Navigate to home or dashboard after login
+//       })
+//       .catch((error) => {
+//         const errorMessage = error.message;
+//         toast.error(`Error signing in: ${errorMessage}`);
+//       });
+//   };
+
+//   const handleForgotPassword = () => {
+//     if (email) {
+//       sendPasswordResetEmail(auth, email)
+//         .then(() => {
+//           toast.success('Password reset email sent!');
+//         })
+//         .catch((error) => {
+//           const errorMessage = error.message;
+//           toast.error(`Error sending password reset email: ${errorMessage}`);
+//         });
+//     } else {
+//       toast.error('Please enter your email address first.');
+//     }
+//   };
+
+//   return (
+//     <div className={styles.modalContent}>
+//       <form onSubmit={handleSubmit} className={styles.form}>
+//         <input
+//           type="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           placeholder="Email"
+//           className='form-control mb-3'
+//           required
+//         />
+//         <input
+//           type="password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           placeholder="Password"
+//           className='form-control mb-3'
+//           required
+//         />
+//         <div className='d-flex justify-content-center'>
+//           <button type="submit" className='btn btn-primary'>Log In</button>
+//         </div>
+//         <div className='d-flex justify-content-between mt-3'>
+//           <p className='text-white'>Don't have an account? <b><a className='text-primary' onClick={() => navigate('/signup')} style={{ cursor: 'pointer', color: 'white' }}>Sign Up</a></b></p>
+//           <p className='text-white' onClick={handleForgotPassword} style={{ cursor: 'pointer', whiteSpace:'nowrap' }}><b>Forgot Password?</b></p>
+//         </div>
+//       </form>
+//       <ToastContainer />
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+
+
+
+
 import React, { useState } from 'react';
-import { auth } from '../firebase.js'; // Ensure this path is correct
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { auth, db } from '../firebase.js'; // Ensure this path is correct
+import { signInWithEmailAndPassword, sendPasswordResetEmail, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 import styles from './login.module.css';
 import { useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
-import logo from '../assets/socialhire.png'
+import logo from '../assets/socialhire.png';
+import google from '../assets/icons8-google-48.png';
 
-const Login = ({ setIsAuthenticated }) => { // Accept setIsAuthenticated as a prop
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log('User signed in:', user);
-        toast.success('User signed in');
-        setIsAuthenticated(true); // Update the authenticated state
-        navigate('/home'); // Navigate to home or dashboard after login
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Error signing in:', errorCode, errorMessage);
-        toast.error('Error signing in:', errorMessage);
-      });
-  };
+const Login = ({ setIsAuthenticated, onClose }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const provider = new GoogleAuthProvider();
 
-  const handleSignUp = () => {
-    navigate('/signup');
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log('User signed in:', user);
+                toast.success('User signed in');
+                setIsAuthenticated(true); // Update the authenticated state
+                navigate('/home'); // Navigate to home or dashboard after login
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error('Error signing in:', errorCode, errorMessage);
+                toast.error('Error signing in:', errorMessage);
+            });
+    };
 
-  const handleForgotPassword = () => {
-    if (email) {
-      sendPasswordResetEmail(auth, email)
-        .then(() => {
-          toast.success('Password reset email sent!');
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error('Error sending password reset email:', errorCode, errorMessage);
-          toast.error('Error sending password reset email:', errorMessage);
-        });
-    } else {
-      toast.error('Please enter your email address first.');
-    }
-  };
+    const handleGoogleSignIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            console.log('User signed in with Google:', user);
 
-  return (
-    <div className={`${styles.container}`}>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-6 offset-sm-3'>
-            <form onSubmit={handleSubmit} className={`${styles.form} `}>
-              <div className='d-flex justify-content-center align-items-center'>
-                <img src={logo} height={80} width={250} alt="SocialHire Logo" />
-              </div>
-              <p className='text-white fs-6 text-center'>
-                Discover endless opportunities with <b>SocialHire</b>, the AI-driven platform connecting
-                top talent with innovative employers. Take control of your career growth with
-                the support and tools you need to succeed.
-              </p>
-              <input type="email" className='form-control mb-3' value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-              <input type="password" className='form-control mb-3' value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-              <div className='d-flex justify-content-center'>
-                <button type="submit" className='btn btn-primary'>Log In</button>
-              </div>
-              <div className='d-flex justify-content-between mt-3'>
-                <p className='text-white'>Don't have an account? <b  ><a className='text-primary' onClick={handleSignUp} style={{ cursor: 'pointer',color:'white' }}>Sign Up</a></b></p>
-                <p className='text-white' onClick={handleForgotPassword} style={{ cursor: 'pointer' }}><b>Forgot Password?</b></p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <ToastContainer />
-    </div>
-  );
+            // Check if user has additional info
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (!userDoc.exists()) {
+                // Redirect to profile completion form
+                navigate('/complete-profile', { state: { uid: user.uid, email: user.email, displayName: user.displayName } });
+            } else {
+                // User already has additional info
+                toast.success('User signed in with Google successfully');
+                setIsAuthenticated(true); // Update the authenticated state
+                navigate('/home');
+            }
+        } catch (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error('Error signing in with Google:', errorCode, errorMessage);
+            toast.error('Error signing in with Google: ' + errorMessage);
+        }
+    };
+
+    const handleForgotPassword = () => {
+        if (email) {
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    toast.success('Password reset email sent!');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Error sending password reset email:', errorCode, errorMessage);
+                    toast.error('Error sending password reset email:', errorMessage);
+                });
+        } else {
+            toast.error('Please enter your email address first.');
+        }
+    };
+
+    return (
+        <>
+            <div className={styles.overlay} onClick={onClose} />
+            <div className={styles.modal}>
+                <button onClick={onClose} className={styles.closeBtn}>X</button>
+                <form onSubmit={handleSubmit} className={styles.form}>
+                    <input
+                        type="email"
+                        className='form-control mb-3'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required
+                    />
+                    <input
+                        type="password"
+                        className='form-control mb-3'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                    />
+                    <div className='d-flex justify-content-center'>
+                        <button type="submit" className='btn btn-primary'>Log In</button>
+                    </div>
+                    <div className='d-flex justify-content-center mt-3'>
+                        <button type="button" onClick={handleGoogleSignIn} className='btn btn-light'>
+                            <img src={google} alt='googleicon' width={30} height={30}></img>
+                            Continue with Google
+                        </button>
+                    </div>
+                    <div className='d-flex justify-content-between mt-3'>
+                        <p className='text-white' onClick={handleForgotPassword} style={{ cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                            <b>Forgot Password?</b>
+                        </p>
+                    </div>
+                </form>
+                <ToastContainer />
+            </div>
+        </>
+    );
 };
 
 export default Login;
+

@@ -19,7 +19,7 @@ const Home7 = () => {
               <div className={`card-header mb-1 ${styles.cardHeader}`} id="headingOne" role="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <h6 className="mb-0 text-white d-flex justify-content-between p-2">
                 What is SocialHire?
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
                 </h6>
               </div>
               <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
@@ -32,7 +32,7 @@ const Home7 = () => {
               <div className={`card-header mb-1 ${styles.cardHeader}`}  id="headingTwo" role="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 <h6 className="mb-0 text-white d-flex justify-content-between p-2">
                 How do I get started with SocialHire?
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
                 </h6>
               </div>
               <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
@@ -45,7 +45,7 @@ const Home7 = () => {
               <div className={`card-header mb-1 ${styles.cardHeader}`}   id="headingThree" role="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 <h6 className="mb-0 text-white d-flex justify-content-between p-2">
                 What kind of jobs are available on SocialHire?
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
                 </h6>
               </div>
               <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
@@ -58,7 +58,7 @@ const Home7 = () => {
               <div className={`card-header mb-1 ${styles.cardHeader}`}   id="headingFour" role="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 <h6 className="mb-0 text-white d-flex justify-content-between p-2">
                 How does SocialHire help with resume building?
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
                 </h6>
               </div>
               <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
@@ -71,7 +71,7 @@ const Home7 = () => {
               <div className={`card-header mb-1 ${styles.cardHeader}`}   id="headingFive" role="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                 <h6 className="mb-0 text-white d-flex justify-content-between p-2">
                 Can I get career mentorship through SocialHire?
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
                 </h6>
               </div>
               <div id="collapseFive" className="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
@@ -84,7 +84,7 @@ const Home7 = () => {
               <div className={`card-header mb-1 ${styles.cardHeader}`}   id="headingSix" role="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                 <h6 className="mb-0 text-white d-flex justify-content-between p-2">
                 What is a tech portfolio, and how can SocialHire help me create one?
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
                 </h6>
               </div>
               <div id="collapseSix" className="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">

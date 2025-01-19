@@ -1,0 +1,65 @@
+.profileImage{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.profileContainer{
+    background-color: aliceblue;
+    display: flex;
+    justify-content:left;
+    align-items: flex-start;
+    color: black;
+    height: 100vh;
+    text-align: center;
+}
+.card{
+  border-radius: 35px;
+  height: 35vh;
+}
+.mentorFor{
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+    padding: 3px;
+    background-color: rgb(227, 222, 222);
+  }
+  .booking{
+    background-color: gainsboro;
+    border-radius: 25px;
+    position: relative; /* Add this line */
+    overflow: hidden; /* Add this line */
+}
+
+.booking::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(119, 118, 118, 0.5);
+    transform: translateX(-100%) rotate(45deg); /* Adjust the rotation as needed */
+    transition: transform 1s;
+}
+
+.booking:hover::after {
+    transform: translateX(100%) rotate(45deg);
+}
+
+.booking:hover .free{
+    background-color: black;
+    color: white;
+}
+
+.booking:hover .calender{
+    color: black;
+}
+
+.free{
+    background-color: gainsboro;
+    justify-self: center;
+    border-radius: 25px;
+}
+
+.calender{
+    color: gray;
+}

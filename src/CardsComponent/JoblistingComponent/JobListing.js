@@ -646,7 +646,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Cards from '../Cards.js';
 import JobDetails from '../JobDetailsComponent/JobDetails.js';
 import { convertFromRaw, Editor, EditorState } from 'draft-js';
-import logo from '../../assets/socialhire.png';
+import logo from '../../assets/Social_Hire_page-0001-removebg-preview.png';
 import JobDetail from '../MobileViewCardsComponent/JobData.js';
 import JobCards  from '../MobileViewCardsComponent/JobCard.js';
 import Search from '../../assets/Search.gif'
@@ -682,42 +682,42 @@ const JobListing = () => {
       });
       return () => unsubscribe();
     }, []);
- 
     useEffect(() => {
       const fetchJobs = async () => {
         const querySnapshot = await getDocs(collection(db, "Users"));
         const jobsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setJobs(jobsData);
-        // if (jobsData.length > 0) {
-        //   setSelectedJob(jobsData[0]); // Set the first job as the default selected job
-        // }
-        console.log('Selected Job:', selectedJob);
-console.log('Job from Card:', job);
-              try {
-                if (job?.jobDescription) {
-                  const jobDescriptionRawContentState = JSON.parse(job.jobDescription);
-                  const jobDescription = EditorState.createWithContent(convertFromRaw(jobDescriptionRawContentState));
-                  setEditorStateJobDescription(jobDescription);
-                } else {
-                  setEditorStateJobDescription(EditorState.createEmpty());
-                }
-        
-                if (job?.whatYouWillBring) {
-                  const whatYouWillBringRawContentState = JSON.parse(job.whatYouWillBring);
-                  const whatYouWillBring = EditorState.createWithContent(convertFromRaw(whatYouWillBringRawContentState));
-                  setEditorStateWhatYouWillBring(whatYouWillBring);
-                } else {
-                  setEditorStateWhatYouWillBring(EditorState.createEmpty());
-                }
-              } catch (error) {
-                console.error('Error parsing JSON:', error);
-              }
-            
-        
+        if (jobsData.length > 0) {
+          setSelectedJob(jobsData[jobsData.length - 1]); // Set the last job as the default selected job
+          setShowDetails(true); // Show details for the last job
+        }
       };
       fetchJobs();
-    }, [job]);
-
+    }, []);
+ 
+    useEffect(() => {
+      if (selectedJob) {
+        try {
+          if (selectedJob.jobDescription) {
+            const jobDescriptionRawContentState = JSON.parse(selectedJob.jobDescription);
+            const jobDescription = EditorState.createWithContent(convertFromRaw(jobDescriptionRawContentState));
+            setEditorStateJobDescription(jobDescription);
+          } else {
+            setEditorStateJobDescription(EditorState.createEmpty());
+          }
+  
+          if (selectedJob.whatYouWillBring) {
+            const whatYouWillBringRawContentState = JSON.parse(selectedJob.whatYouWillBring);
+            const whatYouWillBring = EditorState.createWithContent(convertFromRaw(whatYouWillBringRawContentState));
+            setEditorStateWhatYouWillBring(whatYouWillBring);
+          } else {
+            setEditorStateWhatYouWillBring(EditorState.createEmpty());
+          }
+        } catch (error) {
+          console.error('Error parsing JSON:', error);
+        }
+      }
+    }, [selectedJob]);
   
     const filteredJobs = jobs.filter(job => {
       const locationMatch = selectlocation === 'all' || job.location.toLowerCase() === selectlocation.toLowerCase();
@@ -957,7 +957,7 @@ cursor: 'pointer'
    
 
         {/* Job details card display */}
-        {showDetails ? (
+        {showDetails && selectedJob ? (
           <>
           <div className={`col-12 col-md-6 d-none d-md-block ${styles.jobDetailCard}`}>
             <div className={`p-5 ${styles.jobDetailsCardBody}`}>
@@ -990,24 +990,13 @@ cursor: 'pointer'
 
                   <div className='mt-3'>
                     <h5 className='fw-bold'>Job Description</h5>
-                    {/* <Editor
+                    <Editor
                       editorState={editorStateJobDescription}
                       toolbarClassName="toolbarClassName"
                       wrapperClassName="wrapperClassName"
                       editorClassName="editorClassName"
                       readOnly={true} // Set readOnly to true to prevent editing
-                    /> */}
-        {job.jobDescription ? (
-        <Editor
-          editorState={editorStateJobDescription}
-          toolbarClassName="toolbarClassName"
-          wrapperClassName="wrapperClassName"
-          editorClassName="editorClassName"
-          readOnly={true}
-        />
-      ) : (
-        <p>No job description available.</p>
-      )}
+                    />
                     <h5 className='fw-bold mt-3'> Required Skills</h5>
                     <div className={styles.tags}>
                       {selectedJob.tags && selectedJob.tags.map((tag, index) => (
