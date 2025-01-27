@@ -1,0 +1,28 @@
+
+.gradientText {
+    background: linear-gradient(to right, rgb(255, 0, 255), rgb(255, 127, 80)); /* RGB colors */
+    background-clip: text;
+    color: transparent;
+}
+.Home5{
+    background-color: rgb(16, 16, 16);
+    border-radius: 15px;
+}
+
+.blurBackground {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+  }
+  /* Home3.module.css */
+  .blurBackground::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    /* Optional: Add a semi-transparent background color */
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999; /* Ensure it's below the modal but above other content */
+  }

@@ -1,0 +1,60 @@
+.faqContactContainer {
+  background-image: url('../../assets/gradient2.png');
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Improved form control focus styles */
+.form-control:focus {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+.cardHeader {
+  background-color: #222 !important;
+  color: white;
+}
+
+.cardBody {
+  background-color: #222 !important;
+  color: gray !important;
+}
+
+.gradientText {
+  background: linear-gradient(to right, rgb(255, 0, 255), rgb(255, 127, 80));
+  background-clip: text;
+  color: transparent;
+}
+
+.styledInput {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #878585;
+  color: #fff !important;
+}
+
+/* Placeholder color */
+.styledInput::placeholder {
+  color: rgb(139, 136, 136) !important;
+  opacity: 1;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+  .faqContactContainer {
+    padding: 15px;
+  }
+  .card {
+    margin: 10px 0; /* Reduce margin for small screens */
+  }
+  .form-control {
+    margin-bottom: 15px;
+  }
+  .btn {
+    width: 100%; /* Ensure button takes full width on small screens */
+  }
+}

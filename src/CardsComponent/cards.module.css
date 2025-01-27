@@ -1,0 +1,60 @@
+.jobCard {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+  border-radius: 10px;
+  margin: 16px;
+  margin-bottom: 10px;
+  max-width: 350px;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+  background-color: white;
+  box-shadow: 0 4px 8px #adacac;
+}
+
+.jobCard:hover {
+  transform: scale(1.01); 
+  border: 3px solid #03709f;
+}
+
+.companyLogo {
+  width: 50px;
+  height: 50px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
+
+.viewButton {
+  background-color: #03709f !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.blink {
+  animation: zoomRotateBlink 1s linear infinite;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* .expiredCard {
+  background-color: #d0cece !important;
+} */
+
+.available {
+  color: green;
+  padding: 5px;
+  background-color: rgba(214, 230, 214, 0.6);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.expiredText {
+  color: red !important;
+  padding: 5px;
+  background-color:rgba(249, 206, 206,0.6) !important;
+  border-radius: 10px;
+  font-size: 15px;
+}

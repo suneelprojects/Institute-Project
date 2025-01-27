@@ -1,0 +1,8 @@
+.Home{
+    /* background-image: url('../assets/backgrounfGIF.gif'); */
+    background-color: rgb(1, 1, 42);
+}
+.navbarTogglerLeft {
+     position: absolute; 
+     left: 0; /* Position it to the left side */
+     }

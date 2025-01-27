@@ -1,0 +1,9 @@
+.gradientText {
+    background: linear-gradient(to right, rgb(255, 0, 255), rgb(255, 127, 80)); /* RGB colors */
+    background-clip: text;
+    color: transparent;
+}
+.Home5{
+    background-color: rgb(16, 16, 16);
+    border-radius: 15px;
+}
