@@ -104,7 +104,7 @@ const Host = () => {
             whatYouWillBring: JSON.stringify(whatYouWillBringContent),
         };
 
-        const formDocRef = doc(db, "Users", new Date().getTime().toString());
+        const formDocRef = doc(db, "JOBS", new Date().getTime().toString());
         await setDoc(formDocRef, userData);
 
         console.log('Data stored successfully');

@@ -1,0 +1,87 @@
+.ProfileHome{
+    background-color: aliceblue;
+}
+
+.skillsContainer {
+    /* height: 200px; Set a fixed height */
+    overflow: hidden; /* Hide the overflowing content */
+    /* border: 1px solid #ccc; */
+    height: 40vh;
+    /* height: 100%; */
+    width: 100%;
+  /* box-shadow: 0px 5px 10px rgba(59, 58, 58, 0.1) !important; */
+  /* border-radius: 15px; */
+  }
+  .projectsContainer{
+    /* overflow: hidden; */
+    height: 40vh;
+    width: 100%;
+  }
+  .certificatesContainer{
+    /* overflow: hidden; */
+    height: 40vh;
+    width: 100%;
+  }
+  .skills{
+    background-color: white;
+    border-radius: 15px !important;
+  }
+  .projects{
+    background-color: white;
+    border-radius: 15px !important;
+  }
+  .certificates{
+    background-color: white;
+    border-radius: 15px !important;
+  }
+  .resume{
+    background-color: white;
+    border-radius: 15px !important;
+  }
+  
+  .skillsList {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* color: blue; */
+    animation: scrollVertical 7s linear infinite; /* Apply the animation */
+  }
+  .gradientText {
+    font-size: 40px;
+    font-weight: bold;
+    /* background: linear-gradient(to right, #ff7e5f, #feb47b); */
+    background: linear-gradient(90deg, #014589, #024e75, #03709f);
+    background-clip: text;
+    color: transparent;
+  }
+  .certificateImage{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+  }
+  
+  
+  @keyframes scrollVertical {
+    0% {
+      transform: translateY(0%);
+    }
+    50% {
+      transform: translateY(-50%);
+    }
+    100%{
+      transform: translateY(-100%);
+    }
+  }
+
+  .projectImage{
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 15px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

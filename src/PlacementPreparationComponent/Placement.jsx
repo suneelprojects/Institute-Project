@@ -16,7 +16,6 @@ const Placement = () => {
                             marginLeft: 'auto',
                             marginRight: 'auto',
                             border:'none',
-                            border: 'none',
                              padding: '0'
                         }} autoPlay loop muted></video>
                     </div>

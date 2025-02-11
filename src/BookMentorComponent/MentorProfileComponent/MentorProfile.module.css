@@ -18,7 +18,7 @@
     background-color: rgb(227, 222, 222);
   }
   .booking{
-    background-color: gainsboro;
+    background-color:#b5daea !important;
     border-radius: 25px;
     position: relative; /* Add this line */
     overflow: hidden; /* Add this line */
@@ -50,7 +50,7 @@
 }
 
 .free{
-    background-color: gainsboro !;
+    background-color: gainsboro !important;
     justify-self: center;
     border-radius: 25px;
 }
@@ -71,7 +71,7 @@
     margin: 0.2em;
     font-size: 0.75em;
     color: #fff;
-    background-color: #c7cacd !important;
+    background-color:#03709f !important;
     border-radius: 0.2em;
 
   

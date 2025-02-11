@@ -15,35 +15,6 @@ transition: transform 0.2s ease-in-out;
     transform: scale(1.06);
   }
 
-  /* .scrollcontainer {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-  }
-
-  .scrollcontainer::-webkit-scrollbar {
-    display: none;
-  } */
-
-  /* .scrollcontent {
-    display: inline-flex;
-    animation: scroll 30s linear infinite;
-    white-space: nowrap;
-  }
-
-  .scrollcontent > * {
-    flex: 0 0 auto;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  } */
-
   .profile {
     width: 50px;
     height: 50px;
@@ -54,6 +25,7 @@ transition: transform 0.2s ease-in-out;
     border: 1px solid gainsboro;
     border-radius: 20px;
     padding: 3px;
-    background-color: rgb(227, 222, 222);
+    background-color:#03709f ;
+    color: white;
     white-space: nowrap;
   }

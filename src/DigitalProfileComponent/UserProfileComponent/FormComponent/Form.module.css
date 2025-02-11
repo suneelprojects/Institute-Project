@@ -1,0 +1,52 @@
+/* Form.module.css */
+.formContainer {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 150px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skillsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .skillTag {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .skillTag button {
+    background: transparent;
+    border: none;
+    color: white;
+    margin-left: 5px;
+  }
+  
+  .certificationGroup,
+  .projectGroup {
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #ffffff;
+  }
+  
+  button[type="button"] {
+    margin-top: 10px;
+  }
+  
+  .btnSuccess {
+    display: block;
+    /* width: 100%; */
+  }
+  

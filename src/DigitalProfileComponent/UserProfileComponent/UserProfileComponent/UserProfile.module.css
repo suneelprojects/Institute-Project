@@ -1,0 +1,14 @@
+.userprofile{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* height: 100vh; */
+    border-radius: 20px;
+}
+.profileImage{
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
