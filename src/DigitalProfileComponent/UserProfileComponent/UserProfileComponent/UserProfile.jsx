@@ -3,6 +3,8 @@ import { getFirestore, collection, query, where, getDocs } from 'firebase/firest
 import app from '../../../services/firebaseConfig.js'; // Firebase configuration file
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import style from './UserProfile.module.css'
+import logo from '../../../assets/userProfileLogo.png';
+
 
 const db = getFirestore(app);
 
@@ -63,6 +65,7 @@ const UserProfile = ({ userId }) => {
       ) : (
 
           <div>
+          <img src={logo}></img>
             <p className={style.noProfile}>Create a Digital Profile</p>
             <button className="btn btn-primary" onClick={() => navigate('/form')}>Create Profile</button>
           </div>

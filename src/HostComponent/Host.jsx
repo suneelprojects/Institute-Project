@@ -80,11 +80,11 @@ const Host = () => {
     e.preventDefault();
 
     // Validate form fields
-    const isEmptyField = Object.values(formInput).some(field => field === '');
-    if (isEmptyField || !image) {
-        alert('Please fill in all fields and upload an image.');
-        return; // Prevent form submission
-    }
+    // const isEmptyField = Object.values(formInput).some(field => field === '');
+    // if (isEmptyField || !image) {
+    //     alert('Please fill in all fields and upload an image.');
+    //     return; // Prevent form submission
+    // }
 
     try {
         const imageRef = ref(storage, `images/${image.name}`);
@@ -261,7 +261,7 @@ const Host = () => {
                   {tags.map((tag, index) => (
                     <li key={index} className={style.tag}>
                       {tag}
-                      <button type="button" onClick={() => removeTag(index)}>x</button>
+                      <span type="button" onClick={() => removeTag(index)} className='ms-3 text-center mb-1'>x</span>
                     </li>
                   ))}
                 </ul>
@@ -329,7 +329,6 @@ const Host = () => {
                   name='companyLink'
                   onChange={changeHandler}
                   value={formInput.companyLink}
-                  required
                 />
               </div>
             </div>
@@ -342,8 +341,6 @@ const Host = () => {
           onChange={changeHandler}
           name='workLocation' // Ensure this matches formInput
           value={formInput.workLocation}
-
-          required
         >
           <option value=''>Select a location</option>
           <option value='On-site'>On-site</option>

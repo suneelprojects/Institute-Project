@@ -21,7 +21,7 @@ const HomeNavBar = () => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg px-3 py-5">
+            <nav className="navbar navbar-expand-lg px-3 py-3">
                 <div className="container-fluid mt-3" style={{ background: 'linear-gradient(to right, rgba(255, 0, 255, 0.3), rgba(255, 127, 80, 0.3))' }}>
                     <Link className="navbar-brand" to='/'>
                         <img src={logo} alt="icon" width="180" height="50" />
@@ -37,13 +37,16 @@ const HomeNavBar = () => {
                                 <b><Link className="nav-link text-white fs-6" onClick={toggleLogin}>Curated jobs</Link></b>
                             </li>
                             <li className="nav-item">
-                                <b><Link className="nav-link text-white mx-2 fs-6" onClick={toggleLogin}>Resume checker</Link></b>
+                                <b><Link className="nav-link text-white mx-2 fs-6" onClick={toggleLogin}>AI Resume Builder</Link></b>
                             </li>
                             <li className="nav-item">
                                 <b><Link className="nav-link text-white mx-2 fs-6" onClick={toggleLogin}>Book Mentor</Link></b>
                             </li>
                             <li className="nav-item">
                                 <b><Link className="nav-link text-white mx-2 fs-6" onClick={toggleLogin}>Placement Preparation</Link></b>
+                            </li>
+                            <li className="nav-item">
+                                <b><Link className="nav-link text-white mx-2 fs-6" onClick={toggleLogin}>Digital Profile</Link></b>
                             </li>
                         </ul>
 

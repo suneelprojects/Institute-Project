@@ -81,7 +81,7 @@ const JobCard = ({ job, onCardClick }) => {
     e.stopPropagation(); // Prevent event propagation
     if (job && job.id) {
       setViewCount(prevCount => prevCount + 1);
-      const jobRef = doc(db, "Users", job.id);
+      const jobRef = doc(db, "JOBS", job.id);
       await updateDoc(jobRef, {
         views: viewCount + 1
       });

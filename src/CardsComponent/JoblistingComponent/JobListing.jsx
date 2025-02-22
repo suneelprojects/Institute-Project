@@ -46,7 +46,7 @@ const JobListing = () => {
     }, []);
     useEffect(() => {
       const fetchJobs = async () => {
-        const querySnapshot = await getDocs(collection(db, "Users"));
+        const querySnapshot = await getDocs(collection(db, "JOBS"));
         const jobsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setJobs(jobsData);
         if (jobsData.length > 0) {
@@ -383,10 +383,6 @@ cursor: 'pointer'
               )}
             </div>
           </div>
-
- {/* <JobDetail selectedJob={selectedJob} 
- editorStateJobDescription={editorStateJobDescription} 
- editorStateWhatYouWillBring={editorStateWhatYouWillBring} /> */}
  </>
         ):
         <div className={`col-12 col-md-6 d-none d-md-block ${styles.jobDetailCard}`}>

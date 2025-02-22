@@ -30,7 +30,7 @@ const Login = ({ setIsAuthenticated, onClose }) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error('Error signing in:', errorCode, errorMessage);
-        toast.error('Error signing in:', errorMessage);
+        // toast.error('Error signing in:', errorMessage);
       });
   };
 

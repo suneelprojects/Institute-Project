@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../services/firebaseConfig.js';
 import style from './BookMentor.module.css';
-import MentorData from './MentorDataComponent/MentorData.jsx';
+import MentorData from './MentorDataComponent/Mentordata.jsx';
 
 const BookMentor = () => {
     const navigate = useNavigate();

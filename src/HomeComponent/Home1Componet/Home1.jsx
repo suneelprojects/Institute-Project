@@ -22,7 +22,7 @@ const Home1 = () => {
       <div className={`${isLoginOpen ? styles.blurBackground : ''}`}>
         <div className='row align-items-center text-center mt-5'>
           <div className='col-md-12 col-sm-12'>
-            <div className='d-block justify-content-center align-items-center' style={{ height: '85vh' }}>
+            <div className='d-block justify-content-center align-items-center mt-5' style={{ height: '80vh' }}>
               <p className={`fs-1 fw-bolder text-white ${styles.text}`}>
                 <span className={styles.gradientText}> SocialHire,</span> Where Your Dreams <br /> and Opportunities Meet!
               </p>
